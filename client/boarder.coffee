@@ -12,14 +12,15 @@ Meteor.startup(() ->
   canvas.hammer().on('dragstart', (event) ->
     console.log "START"
     drawing = true;
-    from = {x: parseInt(event.gesture.center.pageX), y: parseInt(event.gesture.center.pageY)}
+    console.log event
+    from = {x: parseInt(event.gesture.srcEvent.offsetX), y: parseInt(event.gesture.srcEvent.offsetY)}
   ).on('dragend', () ->
     console.log "END"
     drawing = false
   ).on('drag', (event) ->
     return if(!drawing)
     console.log "DRAW DRAW DRAW"
-    to = {x: parseInt(event.gesture.center.pageX), y: parseInt(event.gesture.center.pageY)}
+    to = {x: parseInt(event.gesture.srcEvent.offsetX), y: parseInt(event.gesture.srcEvent.offsetY)}
     drawLine(ctx, from, to)
     Lines.insert({from: from, to: to})
     from = to
