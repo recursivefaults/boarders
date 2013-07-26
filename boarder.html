@@ -16,6 +16,10 @@
 
 <template name="heading">
   <div class="topic">
+    <div class="pull-right">
+      <button id="clear-button" class="btn btn-primary">Clear</button>
+      <input type="checkbox" name="is_teacher">Are you a teacher</input>
+    </div>
     <h3>{{topic}}</h3>
     <input style="display:none" type="text" value="{{topic}}">
   </div>

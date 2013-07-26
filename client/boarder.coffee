@@ -48,4 +48,10 @@ Meteor.startup(() ->
     ctx.stroke()
 )
 
+Template.heading.events(
+  'click #clear-button': (event,template) ->
+    console.log "BOOP"
+    Meteor.call('wipeScreen')
+)
+
 
