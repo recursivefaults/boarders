@@ -14,7 +14,7 @@
 </template>
 
 <template name="canvas">
-    <canvas id="student-canvas"></canvas>
+    <canvas id="student-canvas" height:"600px" width:"800px"></canvas>
 </template>
 
 
@@ -61,7 +61,7 @@
       <h3>{{topic}}</h3>
   </div>
   {{#if currentUser}}
-  <section id="canvas-section" class="row text-center">
+  <section id="canvas-section" class="row">
     {{> canvas}}
   </section>
   {{/if}}

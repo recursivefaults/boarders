@@ -66,7 +66,11 @@ Template.canvas_page.topic = () ->
 Template.canvas.rendered = () ->
   canvas = $('canvas')
   return if canvas.length == 0
+  canvas.attr
+    width: "800px"
+    height: "600px"
   ctx = canvas[0].getContext('2d')
+  
   drawing = false
   from = null
   canvas.hammer().on('dragstart', (event) ->
@@ -102,6 +106,7 @@ wipe = (ctx, canvas) ->
 drawLine = (ctx, from, to, should_scale) ->
   scaleX = 1.0
   scaleY = 1.0
+  ctx.lineWidth = 1
   if(should_scale)
     scaleX = ctx.canvas.width/800
     scaleY = ctx.canvas.height/600
