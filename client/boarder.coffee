@@ -1,6 +1,7 @@
-
-Meteor.startup(() ->
+Template.canvas.rendered = () ->
   canvas = $('canvas')
+  return if canvas.length == 0
+  console.log canvas
   ctx = canvas[0].getContext('2d')
   console.log ctx
   drawing = false
@@ -22,16 +23,17 @@ Meteor.startup(() ->
     console.log "DRAW DRAW DRAW"
     to = {x: parseInt(event.gesture.srcEvent.offsetX), y: parseInt(event.gesture.srcEvent.offsetY)}
     drawLine(ctx, from, to)
-    Lines.insert({from: from, to: to})
+    user_id = Meteor.userId()
+    Lines.insert({user_id: user_id, from: from, to: to})
     from = to
   )
   wipe = (ctx) ->
     ctx.fillRect(0, 0, canvas.width(), canvas.height());
   
-  Meteor.autorun( ()->
-
+  Meteor.autorun(()->
+  
     wipe(ctx)
-
+  
     Lines.find().forEach((line) -> 
       drawLine(ctx, line.from, line.to)
     )
@@ -40,17 +42,23 @@ Meteor.startup(() ->
   ctx.strokeStyle = '#ffffff'
   ctx.fillStyle = '#000000'
   
-  drawLine = (ctx, from, to) ->
-    ctx.beginPath()
-    ctx.moveTo(from.x, from.y)
-    ctx.lineTo(to.x, to.y)
-    ctx.closePath()
-    ctx.stroke()
-)
+
+
+
+drawLine = (ctx, from, to) ->
+  ctx.beginPath()
+  ctx.moveTo(from.x, from.y)
+  ctx.lineTo(to.x, to.y)
+  ctx.closePath()
+  ctx.stroke()
+
+Template.canvas.isTeacher = () ->
+  true
 
 Template.heading.events(
   'click #clear-button': (event,template) ->
     console.log "BOOP"
+    console.log Meteor.users.find().count()
     Meteor.call('wipeScreen')
 )
 

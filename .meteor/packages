@@ -10,3 +10,6 @@ coffeescript
 bootstrap
 underscore
 jquery
+accounts-base
+accounts-google
+accounts-ui
