@@ -69,10 +69,6 @@ Template.canvas.rendered = () ->
   ctx = canvas[0].getContext('2d')
   drawing = false
   from = null
-  canvas.attr(
-    width: $("#canvas-section").width()
-    height: $("#canvas-section").height()
-  )
   canvas.hammer().on('dragstart', (event) ->
     console.log "START"
     drawing = true;

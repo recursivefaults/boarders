@@ -5,8 +5,8 @@ body { padding-top: 70px; }
 /*@media (min-width: 979px) { body { padding-top: 60px; } }*/
 #heading {height: 70px;}
 .center {margin-left: auto; margin-right: auto;}
-#canvas-section {background-color: #FFF; height:600px; width:800px; margin-left: auto; margin-right: auto;}
-canvas {height: 100%; width: 100%;}
+#canvas-section {background-color: #FFF;}
+#canvas-section canvas {height: 600px !important; width: 800px !important; }
 
 #canvases {
   margin-top: 20px;
