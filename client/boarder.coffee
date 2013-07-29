@@ -35,8 +35,8 @@ Template.account_page.events
 
 Template.teacher_page.events
   'submit': (event, template) ->
-    Topics.remove({})
-    Topics.insert({topic: template.find('input').value})
+    event.preventDefault()
+    Meteor.call('setTopic', template.find('input').value)
 
 Template.teacher_page.non_teachers = () ->
   Meteor.users.find()
@@ -109,12 +109,13 @@ drawLine = (ctx, from, to, should_scale) ->
   if(should_scale)
     scaleX = ctx.canvas.width/800
     scaleY = ctx.canvas.height/600
+    ctx.lineWidth = .5
     # console.log scaleX
   # console.log "FROM: #{parseInt(from.x * scaleX)}, #{parseInt(from.y * scaleY)}"
   # console.log "TO: #{parseInt(to.x * scaleX)}, #{parseInt(to.y * scaleY)}"
   ctx.beginPath()
-  ctx.moveTo(parseInt(from.x * scaleX), parseInt(from.y * scaleY))
-  ctx.lineTo(parseInt(to.x * scaleX), parseInt(to.y * scaleY))
+  ctx.moveTo(from.x * scaleX, from.y * scaleY)
+  ctx.lineTo(to.x * scaleX, to.y * scaleY)
   ctx.closePath()
   ctx.stroke()
 

@@ -57,14 +57,12 @@
 </template>
 
 <template name="canvas_page">
-  <div class="row">
-    <h4>{{topic}}</h4>
+  <div class="row text-center">
+      <h3>{{topic}}</h3>
   </div>
   {{#if currentUser}}
-  <section id="canvas-section" class="row">
-    <div class="center">
+  <section id="canvas-section" class="row center">
     {{> canvas}}
-    </div>
   </section>
   {{/if}}
 </template>
