@@ -7,7 +7,6 @@ autopublish
 insecure
 preserve-inputs
 coffeescript
-bootstrap
 underscore
 jquery
 accounts-base
