@@ -1,0 +1,7 @@
+{ 
+  "googleClientId": "739728247473-tj299mg17p6tbkt9dfu9658vvnpl06j0.apps.googleusercontent.com",
+  "googleSecret": "739728247473-tj299mg17p6tbkt9dfu9658vvnpl06j0@developer.gserviceaccount.com",
+  "url": "http://boarders.meteor.com",
+  "baseDir":"bundle",
+  "public": {"logLevel": 4}
+}
