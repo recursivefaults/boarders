@@ -1,0 +1,82 @@
+<head>
+  <title>boarder</title>
+</head>
+
+<body>
+  {{> heading}}
+  <div class="container">
+    {{> main_page }}
+  </div>
+</body>
+
+<template name="main_page">
+  {{{main}}}
+</template>
+
+<template name="canvas">
+    <canvas id="student-canvas"></canvas>
+</template>
+
+
+<template name="account_page">
+  <div class="row">
+    <div class="col-4 col-offset-4">
+      <h3>Account Settings</h3>
+      <div class="well">
+        <label>
+        <input type="checkbox" id="is_teacher" {{{is_checked}}}> I am a teacher
+        </label>
+      </div>
+      <div>
+        <button class="btn btn-primary" id="save-button">Save</button>
+        <button class="btn btn-cancel pull-right" id="sign-out-button">Sign Out</button>
+      </div>
+    </div>
+  
+  </div>
+</template>
+
+<template name="teacher_page">
+  <div class="row">
+    <form class="form-inline">
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="topic_input" placeholder="Enter your topic here!">
+        </div>
+        <submit class="btn btn-primary" id="go_button">Go!</submit>
+    </form>
+  </div>
+  <div class="row" id="canvases">
+    {{#each non_teachers}}
+      {{> tiny_canvas }}
+    {{/each}}
+  </div>
+</template>
+
+<template name="tiny_canvas">
+  <canvas id="{{_id}}" width="80px" height="60px"></canvas>
+</template>
+
+<template name="canvas_page">
+  <div class="row">
+    <h4>{{topic}}</h4>
+  </div>
+  {{#if currentUser}}
+  <section id="canvas-section" class="row">
+    <div class="center">
+    {{> canvas}}
+    </div>
+  </section>
+  {{/if}}
+</template>
+
+<template name="heading">
+  <div class="navbar navbar-fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Boarder</a>
+      <button id="clear-button" class="btn btn-default navbar-btn">Clear Board</button>
+      <ul class="nav navbar-nav">
+      </ul>
+      <p class="navbar-text pull-right"><a class="navbar-link" id="account-name" href="#">{{#if currentUser}}{{currentUser.profile.name}}{{else}}{{loginButtons}}{{/if}}</a></p>
+    </div>
+  </div>
+</template>

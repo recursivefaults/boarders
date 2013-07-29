@@ -1,0 +1,25 @@
+/* CSS declarations go here */
+body { padding-top: 70px; }
+/*body {background: #DDD; font-size:16px;}*/
+/*div.container {width: 800px; height: 700px;}*/
+/*@media (min-width: 979px) { body { padding-top: 60px; } }*/
+#heading {height: 70px;}
+.center {margin: 0,auto;}
+#canvas-section {background-color: #FFF; height:600px; width:800px;}
+canvas {height: 100%; width: 100%;}
+
+#canvases {
+  margin-top: 20px;
+  line-height: 0;
+  -webkit-column-count: 5;
+  -webkit-column-gap:   10px;
+  -moz-column-count:    5;
+  -moz-column-gap:      10px;
+  column-count:         5;
+  column-gap:           10px;
+}
+
+#canvases canvas {
+  width: 100% !important;
+  height: auto !important;
+}
